@@ -1,0 +1,16 @@
+<div id="mediaplayer" style="width:100%;height:100%;">JW Player goes here</div>
+
+<%= javascript_include_tag "jwplayer" %>
+<script type="text/javascript">
+	jwplayer("mediaplayer").setup({
+		flashplayer: "/swfs/player.swf",
+    width: "100%",
+    height: "100%",
+		file: "http://sahajtube-test-us.s3.amazonaws.com/videos/<%= params[:youtube_id] %>/<%= params[:youtube_id] %>.mp4",
+		image: "http://sahajtube-test-us.s3.amazonaws.com/videos/<%= params[:youtube_id] %>/hqdefault.jpg"
+		<% if params[:caption] %>,
+		plugins: "captions-2",
+		'captions.file': "/captions/<%= params[:youtube_id] %>/<%= params[:caption] %>"
+		<% end %>
+	});
+</script>
